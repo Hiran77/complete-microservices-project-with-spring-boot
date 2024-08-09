@@ -48,5 +48,5 @@ This project is developed as part of a learning journey to understand and implem
 
 1. **Clone the Repository**:
    ```bash
-   git clone https://github.com/yourusername/complete-microservices-project-with-spring-boot.git
+   git clone https://github.com/savindu29/complete-microservices-project-with-spring-boot.git
    cd complete-microservices-project-with-spring-boot
