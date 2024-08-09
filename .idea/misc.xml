@@ -6,6 +6,8 @@
       <list>
         <option value="$PROJECT_DIR$/account-management/pom.xml" />
         <option value="$PROJECT_DIR$/lib-common/pom.xml" />
+        <option value="$PROJECT_DIR$/card-management/pom.xml" />
+        <option value="$PROJECT_DIR$/loan-management/pom.xml" />
       </list>
     </option>
   </component>
