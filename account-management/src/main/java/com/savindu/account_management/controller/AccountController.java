@@ -1,5 +1,7 @@
 package com.savindu.account_management.controller;
 
+import com.savindu.AccountURI;
+import com.savindu.URIPrefix;
 import com.savindu.account_management.constant.AccountConstant;
 import com.savindu.account_management.dto.request.CustomerRequestDto;
 import com.savindu.account_management.dto.request.UpdateCustomerRequestDto;
@@ -18,7 +20,7 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 @Tag(name = "Account", description = "Account Management")
 @RestController
-@RequestMapping(path = "/api",produces ={MediaType.APPLICATION_JSON_VALUE})
+@RequestMapping(path = URIPrefix.API,produces ={MediaType.APPLICATION_JSON_VALUE})
 @AllArgsConstructor
 @Validated
 public class AccountController {
@@ -27,7 +29,7 @@ public class AccountController {
             description = "This endpoint is used to create account",
             tags = {"Account"})
 
-    @PostMapping("/create-account")
+    @PostMapping(URIPrefix.CREATE)
     public ResponseEntity<ResponseDto> createAccount(@Valid  @RequestBody CustomerRequestDto customerDto){
         iAccountService.createAccount(customerDto);
         return ResponseEntity.status(HttpStatus.CREATED)
@@ -36,7 +38,7 @@ public class AccountController {
     @Operation(summary = "Fetch Account Details REST Endpoint",
             description = "This endpoint is used to fetch account details",
             tags = {"Account"})
-    @GetMapping("/fetch/{mobileNumber}")
+    @GetMapping(URIPrefix.GET_ALL)
     public ResponseEntity<CustomerResponseDto> fetchAccountDetails(@PathVariable
                                                                        @Pattern(regexp = "^(\\d{9}[vV]|\\d{12})$", message = "NIC number is invalid")
                                                                String nicNumber){
@@ -47,7 +49,7 @@ public class AccountController {
     @Operation(summary = "Update Account REST Endpoint",
             description = "This endpoint is used to update account",
             tags = {"Account"})
-    @PutMapping("/update-account")
+    @PutMapping(URIPrefix.UPDATE)
     public ResponseEntity<ResponseDto> updateAccount(@Valid @RequestBody UpdateCustomerRequestDto customerDto){
         boolean updateAccount = iAccountService.updateAccount(customerDto);
         if(updateAccount){
@@ -60,7 +62,7 @@ public class AccountController {
     @Operation(summary = "Delete Account REST Endpoint",
             description = "This endpoint is used to delete account",
             tags = {"Account"})
-    @DeleteMapping("/delete/{mobileNumber}")
+    @DeleteMapping(URIPrefix.DELETE+ AccountURI.NIC_NUMBER)
     public ResponseEntity<ResponseDto> deleteAccount(@PathVariable
                                                          @Pattern(regexp = "^(\\d{9}[vV]|\\d{12})$", message = "NIC number is invalid")
                                                          String nicNumber){
