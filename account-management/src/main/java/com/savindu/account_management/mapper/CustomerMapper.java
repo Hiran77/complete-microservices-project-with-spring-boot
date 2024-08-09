@@ -1,8 +1,8 @@
 package com.savindu.account_management.mapper;
 
-import com.savindnu.MicroservicePractice.dto.request.CustomerRequestDto;
-import com.savindnu.MicroservicePractice.dto.response.CustomerResponseDto;
-import com.savindnu.MicroservicePractice.entity.Customer;
+import com.savindu.account_management.dto.request.CustomerRequestDto;
+import com.savindu.account_management.dto.response.CustomerResponseDto;
+import com.savindu.account_management.entity.Customer;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 

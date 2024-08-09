@@ -1,11 +1,11 @@
 package com.savindu.account_management.controller;
 
-import com.savindnu.MicroservicePractice.constant.AccountConstant;
-import com.savindnu.MicroservicePractice.dto.request.CustomerRequestDto;
-import com.savindnu.MicroservicePractice.dto.request.UpdateCustomerRequestDto;
-import com.savindnu.MicroservicePractice.dto.response.CustomerResponseDto;
-import com.savindnu.MicroservicePractice.dto.response.ResponseDto;
-import com.savindnu.MicroservicePractice.service.IAccountService;
+import com.savindu.account_management.constant.AccountConstant;
+import com.savindu.account_management.dto.request.CustomerRequestDto;
+import com.savindu.account_management.dto.request.UpdateCustomerRequestDto;
+import com.savindu.account_management.dto.response.CustomerResponseDto;
+import com.savindu.account_management.dto.response.ResponseDto;
+import com.savindu.account_management.service.IAccountService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;

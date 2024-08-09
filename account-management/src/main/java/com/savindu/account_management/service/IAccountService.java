@@ -1,8 +1,8 @@
 package com.savindu.account_management.service;
 
-import com.savindnu.MicroservicePractice.dto.request.CustomerRequestDto;
-import com.savindnu.MicroservicePractice.dto.request.UpdateCustomerRequestDto;
-import com.savindnu.MicroservicePractice.dto.response.CustomerResponseDto;
+import com.savindu.account_management.dto.request.CustomerRequestDto;
+import com.savindu.account_management.dto.request.UpdateCustomerRequestDto;
+import com.savindu.account_management.dto.response.CustomerResponseDto;
 
 public interface IAccountService {
     void createAccount(CustomerRequestDto customerDto);

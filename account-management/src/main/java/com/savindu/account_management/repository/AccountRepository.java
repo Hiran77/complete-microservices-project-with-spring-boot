@@ -1,6 +1,6 @@
 package com.savindu.account_management.repository;
 
-import com.savindnu.MicroservicePractice.entity.Account;
+import com.savindu.account_management.entity.Account;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.stereotype.Repository;

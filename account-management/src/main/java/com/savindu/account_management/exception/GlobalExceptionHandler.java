@@ -1,6 +1,6 @@
 package com.savindu.account_management.exception;
 
-import com.savindnu.MicroservicePractice.dto.response.ErrorResponseDto;
+import com.savindu.account_management.dto.response.ErrorResponseDto;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
