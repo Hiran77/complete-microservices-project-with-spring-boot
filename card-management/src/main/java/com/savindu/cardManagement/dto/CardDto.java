@@ -9,20 +9,21 @@ import jakarta.validation.constraints.Positive;
 import jakarta.validation.constraints.PositiveOrZero;
 import lombok.*;
 
-@Schema(name = "Cards",
+@Schema(name = "Card",
         description = "Schema to hold Card information"
 )
 @Data
 public class CardDto {
     @JsonProperty("nic_number")
+    @NotEmpty(message = "NIC Number can not be a null or empty")
+    @Pattern(regexp= Patterns.NIC_NUMBER)
     private String nicNumber;
 
     @NotEmpty(message = "Card Number can not be a null or empty")
-    @Pattern(regexp= Patterns.NIC_NUMBER)
+    @Pattern(regexp=Patterns.CARD_NUMBER)
     @Schema(
             description = "Card Number of the customer", example = "100646930341"
     )
-    @JsonProperty("card_number")
     private String cardNumber;
 
     @NotEmpty(message = "CardType can not be a null or empty")

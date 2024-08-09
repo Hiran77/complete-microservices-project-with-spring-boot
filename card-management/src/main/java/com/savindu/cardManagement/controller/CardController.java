@@ -21,7 +21,7 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 
-@Tag(name = "Account", description = "Account Management")
+@Tag(name = "Card", description = "Card Management")
 @RestController
 @RequestMapping(path = URIPrefix.API+CardURI.CARD,produces ={MediaType.APPLICATION_JSON_VALUE})
 @AllArgsConstructor
