@@ -1,6 +1,7 @@
 package com.savindu.account_management.dto.request;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.savindu.Patterns;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Pattern;
@@ -17,7 +18,7 @@ import lombok.NoArgsConstructor;
 )
 public class AccountRequestDto {
     @NotEmpty(message = "Account number is required")
-    @Pattern(regexp = "^[0-9]{9,18}$", message = "Account number is invalid")
+    @Pattern(regexp = Patterns.ACCOUNT_NUMBER, message = "Account number is invalid")
     @JsonProperty("account_number")
     private Long accountNumber;
     @NotEmpty(message = "Account type is required")

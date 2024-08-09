@@ -1,5 +1,6 @@
 package com.savindu.account_management.dto.request;
 
+import com.savindu.Patterns;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotEmpty;
@@ -24,11 +25,13 @@ public class CustomerRequestDto {
     @NotEmpty(message = "Email is required")
     @Email(message = "Email is invalid")
     private String email;
+
     @NotEmpty(message = "Mobile is required")
-    @Pattern(regexp = "^(?:\\+94|0)7\\d{8}$", message = "Mobile is invalid")
+    @Pattern(regexp = Patterns.MOBILE, message = "Mobile is invalid")
     private String mobile;
+
     @NotEmpty(message = "NIC number is required")
-    @Pattern(regexp = "^(\\d{9}[vV]|\\d{12})$", message = "NIC number is invalid")
+    @Pattern(regexp = Patterns.NIC_NUMBER, message = "NIC number is invalid")
     private String nicNumber;
 
 
