@@ -12,6 +12,7 @@
 	<artifactId>card-management</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>card-management</name>
+	<packaging>jar</packaging>
 	<description>Demo project for Spring Boot</description>
 	<url/>
 	<licenses>

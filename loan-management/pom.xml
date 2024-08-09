@@ -11,7 +11,9 @@
 	<groupId>com.savindu</groupId>
 	<artifactId>loan-management</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
+	<packaging>jar</packaging>
 	<name>loan-management</name>
+
 	<description>Demo project for Spring Boot</description>
 	<url/>
 	<licenses>

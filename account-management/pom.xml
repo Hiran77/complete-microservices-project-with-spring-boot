@@ -12,6 +12,7 @@
 	<artifactId>account-management</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>account-management</name>
+	<packaging>jar</packaging>
 	<description>Demo project for Spring Boot</description>
 	<url/>
 	<licenses>
@@ -90,7 +91,7 @@
 			<version>2.5.0</version>
 		</dependency>
 		<dependency>
-			<groupId>com.itgura.lms</groupId>
+			<groupId>com.savindu.bank-app</groupId>
 			<artifactId>lib-common</artifactId>
 			<version>0.0.1</version>
 			<scope>compile</scope>
