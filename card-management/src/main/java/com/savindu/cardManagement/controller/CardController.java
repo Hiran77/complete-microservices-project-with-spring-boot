@@ -7,8 +7,6 @@ import com.savindu.cardManagement.constant.CardConstant;
 import com.savindu.cardManagement.dto.CardDto;
 import com.savindu.cardManagement.dto.ResponseDto;
 import com.savindu.cardManagement.service.ICardService;
-import io.swagger.annotations.ApiResponse;
-import io.swagger.annotations.ApiResponses;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;

@@ -1,0 +1,38 @@
+services:
+  account:
+    image: "microservices-demo/account:v1"
+    container_name: account-service
+    ports:
+      - "8091:8091"
+    deploy:
+      resources:
+        limits:
+          memory: 700m
+    networks:
+      - bank-app-backend
+  loan:
+    image: "microservices-demo/loan:v1"
+    container_name: loan-service
+    ports:
+      - "8092:8092"
+    deploy:
+      resources:
+        limits:
+          memory: 700m
+    networks:
+      - bank-app-backend
+  card:
+    image: "microservices-demo/card:v1"
+    container_name: card-service
+    ports:
+      - "8093:8093"
+    deploy:
+      resources:
+        limits:
+          memory: 700m
+    networks:
+      - bank-app-backend
+
+networks:
+  bank-app-backend:
+    driver: "bridge"

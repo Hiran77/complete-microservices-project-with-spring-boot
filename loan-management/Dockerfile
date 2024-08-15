@@ -5,7 +5,7 @@ FROM openjdk:17-jdk-slim
 MAINTAINER savindu29
 
 # Add a volume pointing to /tmp
-COPY target/account-management-0.0.1-SNAPSHOT.jar account-management-0.0.1-SNAPSHOT.jar
+COPY target/loan-management-0.0.1-SNAPSHOT.jar loan-management-0.0.1-SNAPSHOT.jar
 
 # execute the jar file
-ENTRYPOINT ["java", "-jar", "/account-management-0.0.1-SNAPSHOT.jar"]
+ENTRYPOINT ["java", "-jar", "/loan-management-0.0.1-SNAPSHOT.jar"]
