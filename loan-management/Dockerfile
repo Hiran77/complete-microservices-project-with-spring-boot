@@ -1,11 +1,16 @@
-#start with a base image containing Java runtime
+# Dockerfile for loan-management
+
+# Start with a base image containing Java runtime
 FROM openjdk:17-jdk-slim
 
 # Add Maintainer Info
 MAINTAINER savindu29
 
-# Add a volume pointing to /tmp
-COPY target/loan-management-0.0.1-SNAPSHOT.jar loan-management-0.0.1-SNAPSHOT.jar
+# Copy the jar file from the target directory
+COPY target/loan-management-0.0.1-SNAPSHOT.jar /app/loan-management-0.0.1-SNAPSHOT.jar
 
-# execute the jar file
-ENTRYPOINT ["java", "-jar", "/loan-management-0.0.1-SNAPSHOT.jar"]
+# Set the working directory
+WORKDIR /app
+
+# Execute the jar file
+ENTRYPOINT ["java", "-jar", "/app/loan-management-0.0.1-SNAPSHOT.jar"]

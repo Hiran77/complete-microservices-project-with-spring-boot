@@ -29,10 +29,10 @@ public class AccountServiceImpl implements IAccountService {
     @Override
     public void createAccount(CustomerRequestDto customerDto) {
         Customer customer = CustomerMapper.INSTANCE.toEntity(customerDto);
-        if(customerRepository.findByMobile(customer.getMobile()).isPresent()){
-            throw new CustomerAlreadyException("Customer already registered with given mobile number: "
-                    +customer.getMobile()
-                    +" Please try with different mobile number");
+        if(customerRepository.findByNicNumber(customer.getNicNumber()).isPresent()){
+            throw new CustomerAlreadyException("Customer already registered with given NIC number: "
+                    +customer.getNicNumber()
+                    +" Please try with different NIC number");
         }
         Customer save = customerRepository.save(customer);
         accountRepository.save(createAccount(save));
@@ -65,27 +65,28 @@ public class AccountServiceImpl implements IAccountService {
     }
 
     @Override
+    @Transactional
     public boolean updateAccount(UpdateCustomerRequestDto customerDto) {
         boolean isUpdated = false;
         AccountRequestDto accounResponsetDto = customerDto.getAccount();
         if(accounResponsetDto !=null){
-            Account account = accountRepository.findById(accounResponsetDto.getAccountNumber())
+            Account account = accountRepository.findByAccountNumber(accounResponsetDto.getAccountNumber())
                     .orElseThrow(
-                            ()->new ResourceNotFoundException("Account", "mobile number", customerDto.getMobile())
+                            ()->new ResourceNotFoundException("Account", "NIC Number", customerDto.getNicNumber())
                     );
             account.setAccountType(accounResponsetDto.getAccountType());
             account.setBranchAddress(accounResponsetDto.getBranchAddress());
-            account.setAccountNumber(accounResponsetDto.getAccountNumber());
             accountRepository.save(account);
 
             Long customerId = account.getCustomer().getId();
             Customer customer = customerRepository.findById(customerId)
                     .orElseThrow(
-                            ()->new ResourceNotFoundException("Customer", "mobile number", customerDto.getMobile())
+                            ()->new ResourceNotFoundException("Account", "NIC Number", customerDto.getNicNumber())
                     );
             customer.setEmail(customerDto.getEmail());
             customer.setName(customerDto.getName());
             customer.setMobile(customerDto.getMobile());
+            customer.setNicNumber(customerDto.getNicNumber());
             customerRepository.save(customer);
             isUpdated = true;
         }

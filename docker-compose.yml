@@ -1,38 +1,76 @@
+version: '3.8'
+
 services:
-  account:
-    image: "microservices-demo/account:v1"
-    container_name: account-service
+  mysql:
+    image: mysql:8.0
+    container_name: bank_mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: bank-account
+    ports:
+      - "3307:3306"
+    networks:
+      - bank-network
+    healthcheck:
+      test: ["CMD-SHELL", "mysqladmin ping -h localhost --silent"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  account-management:
+    image: savindu29/account:v1
+    container_name: account-management
+    environment:
+      MYSQL_HOST: mysql
+      MYSQL_PORT: 3306
+      DB_NAME: bank-account
+      MYSQL_USER: root
+      MYSQL_PASSWORD: root
     ports:
       - "8091:8091"
-    deploy:
-      resources:
-        limits:
-          memory: 700m
+    depends_on:
+      mysql:
+        condition: service_healthy
     networks:
-      - bank-app-backend
-  loan:
-    image: "microservices-demo/loan:v1"
-    container_name: loan-service
-    ports:
-      - "8092:8092"
-    deploy:
-      resources:
-        limits:
-          memory: 700m
-    networks:
-      - bank-app-backend
-  card:
-    image: "microservices-demo/card:v1"
-    container_name: card-service
+      - bank-network
+    command: /bin/sh -c "sleep 60 && java -jar /account-management-0.0.1-SNAPSHOT.jar"
+
+  loan-management:
+    image: savindu29/loan:v1
+    container_name: loan-management
+    environment:
+      MYSQL_HOST: mysql
+      MYSQL_PORT: 3306
+      DB_NAME: bank-loan
+      MYSQL_USER: root
+      MYSQL_PASSWORD: root
     ports:
       - "8093:8093"
-    deploy:
-      resources:
-        limits:
-          memory: 700m
+    depends_on:
+      mysql:
+        condition: service_healthy
     networks:
-      - bank-app-backend
+      - bank-network
+    command: /bin/sh -c "sleep 60 && java -jar /loan-management-0.0.1-SNAPSHOT.jar"
+
+  card-management:
+    image: savindu29/card:v1
+    container_name: card-management
+    environment:
+      MYSQL_HOST: mysql
+      MYSQL_PORT: 3306
+      DB_NAME: bank-card
+      MYSQL_USER: root
+      MYSQL_PASSWORD: root
+    ports:
+      - "8092:8092"
+    depends_on:
+      mysql:
+        condition: service_healthy
+    networks:
+      - bank-network
+    command: /bin/sh -c "sleep 60 && java -jar /card-management-0.0.1-SNAPSHOT.jar"
 
 networks:
-  bank-app-backend:
-    driver: "bridge"
+  bank-network:
+    driver: bridge
