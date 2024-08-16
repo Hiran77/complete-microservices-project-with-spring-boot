@@ -5,6 +5,7 @@ import com.savindu.accountManagement.dto.request.AccountRequestDto;
 import com.savindu.accountManagement.dto.request.CustomerRequestDto;
 import com.savindu.accountManagement.dto.request.UpdateCustomerRequestDto;
 import com.savindu.accountManagement.dto.response.CustomerResponseDto;
+import com.savindu.accountManagement.dto.response.ResponseDto;
 import com.savindu.accountManagement.entity.Account;
 import com.savindu.accountManagement.entity.Customer;
 import com.savindu.accountManagement.exception.CustomerAlreadyException;
@@ -15,6 +16,7 @@ import com.savindu.accountManagement.repository.CustomerRepository;
 import com.savindu.accountManagement.service.IAccountService;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import java.util.Random;
@@ -25,6 +27,9 @@ public class AccountServiceImpl implements IAccountService {
     private AccountRepository accountRepository;
     @Autowired
     private CustomerRepository customerRepository;
+
+    @Value("${application.active.profile}")
+    private  String activeProfile;
 
     @Override
     public void createAccount(CustomerRequestDto customerDto) {
@@ -112,6 +117,10 @@ public class AccountServiceImpl implements IAccountService {
 
     }
 
+    @Override
+    public String getActiveProfile() {
+        return activeProfile;
+    }
 
 
 }

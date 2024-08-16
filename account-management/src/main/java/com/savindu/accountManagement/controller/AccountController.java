@@ -76,4 +76,10 @@ public class AccountController {
                     .body(new ResponseDto(AccountConstant.STATUS_500, AccountConstant.MESSAGE_500));
         }
     }
+    @GetMapping(URIPrefix.GET+ "/active-profile")
+    public ResponseEntity<String> getActiveProfile(){
+        String fetch = iAccountService.getActiveProfile();
+        return ResponseEntity.status(HttpStatus.CREATED)
+                .body(fetch);
+    }
 }
